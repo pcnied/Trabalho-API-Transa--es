@@ -1,4 +1,4 @@
-import { UserRepository } from "../../repositories/user.repository";
+import UserRepository from "../../repositories/user/user.repository";
 
 export type UserResponse = {
   id: string;
@@ -17,7 +17,7 @@ export class GetUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
   public execute(id: string): GetUserResponseDTO {
-    const userFound = this.userRepository.getByID(id);
+    const userFound = this.userRepository.getById(id);
 
     if (!userFound) {
       const response: GetUserResponseDTO = {

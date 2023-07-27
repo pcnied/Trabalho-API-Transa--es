@@ -1,5 +1,5 @@
 import User from "../../classes/user";
-import { UserRepository } from "../../repositories/user.repository";
+import UserRepository from "../../repositories/user/user.repository";
 
 type CreateUserRequestDTO = {
   name: string;
@@ -17,22 +17,19 @@ export class CreateUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
   public execute(data: CreateUserRequestDTO): CreateUserResponseDTO {
-    const userFound = this.userRepository.getOne(data.cpf);
+    const { name, email, age, cpf } = data;
+
+    const userFound = this.userRepository.getOne("_cpf", cpf);
 
     if (userFound) {
-      const response = {
-        status: "Usuário já cadastrado.",
-      };
-
-      return response;
+      throw new Error("CPF já utilizado! Tente novamente.");
     }
 
-    const user = new User(data.name, data.age, data.cpf, data.email);
-
+    const user = new User(name, age, cpf, email);
     this.userRepository.create(user);
 
     const response: CreateUserResponseDTO = {
-      status: "Usuário criado com sucesso",
+      status: "Usuário criado com sucesso!",
       user: user,
     };
 

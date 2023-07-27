@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { userRepository } from "../../repositories/user.repository";
+import { userRepository } from "../..";
 import {
   GetAllUsersRequestDTO,
   GetAllUsersUseCase,
-} from "../../usecase/Users/getAllUsers.usecase";
+} from "../../usecase/user/getAllUsers.usecase";
 
 export class GetAllUsersController {
   public execute(req: Request, res: Response) {

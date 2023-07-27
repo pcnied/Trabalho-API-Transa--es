@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { userRepository } from "../../repositories/user.repository";
+import { userRepository } from "../..";
 import {
   UpdateUserRequestDTO,
   UpdateUserUseCase,
-} from "../../usecase/Users/updateUser.usecase";
+} from "../../usecase/user/updateUser.usecase";
 
 export class UpdateUserController {
   public execute(req: Request, res: Response) {

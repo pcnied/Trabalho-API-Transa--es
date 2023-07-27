@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { userRepository } from "../../repositories/user.repository";
-import { DeleteUserUseCase } from "../../usecase/Users/deleteUse.usecase";
+import { userRepository } from "../..";
+import { DeleteUserUseCase } from "../../usecase/user/deleteUse.usecase";
 
 export class DeleteUserController {
   public execute(req: Request, res: Response) {

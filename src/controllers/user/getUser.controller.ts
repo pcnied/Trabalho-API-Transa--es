@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { userRepository } from "../../repositories/user.repository";
-import { GetUserUseCase } from "../../usecase/Users/getUser.usecase";
+import { userRepository } from "../..";
+import { GetUserUseCase } from "../../usecase/user/getUser.usecase";
 
-class GetUserController {
+export class GetUserController {
   public execute(req: Request, res: Response) {
     const { id } = req.params;
 
@@ -16,5 +16,3 @@ class GetUserController {
     return res.status(200).json(response);
   }
 }
-
-export const getUserController = new GetUserController();
